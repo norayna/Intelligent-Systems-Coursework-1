@@ -99,9 +99,9 @@ public class Grid2 {
 			
 			grid[newRow][newColumn] = x;		// x is put into the new cell
 			System.out.println(x + " moved from (" + currentRow + "," + currentColumn + ") to (" + newRow + "," + newColumn + ").");
+			visualise();
 		}
-		visualise();
-		
+				
 	}
 	
 	public void visualise() {

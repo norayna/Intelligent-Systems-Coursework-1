@@ -30,6 +30,7 @@ public class Problem {
 
 	public void bfs() {
 		// look up pseudocode
+		grid.move('x', 
 	}
 
 	public void ids() {

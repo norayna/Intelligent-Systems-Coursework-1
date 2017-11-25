@@ -6,10 +6,15 @@ class Grid2(int size)
 	- void insertBlock(char x);
 	- void visualise();
 
-class Problem()
-	- Grid grid
+class State( )
+	- Grid state;
+
+	- ArrayList<char> possibleMoves();
+
+class Problem(Grid initialState)
+	- Grid grid = initialState
 	- Grid(?)  solution
-	- Grid(?) initial state
+
 	
 	- void(?) BFS
 	- void(?) DFS

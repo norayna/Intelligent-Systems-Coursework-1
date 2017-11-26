@@ -1,5 +1,6 @@
+import java.util.ArrayList;
 
-public class Grid2 {
+public class AbandonedGrid {
 
 	// [row][column]
 	private char[][] grid;
@@ -7,7 +8,7 @@ public class Grid2 {
 	public static final int ROW = 0;
 	public static final int COLUMN = 1;
 
-	public Grid2(int size) {
+	public AbandonedGrid(int size) {
 		this.size = size;
 		grid = new char[size][size];
 		System.out.println("New " + size + "x" + size + " grid created.");
@@ -101,6 +102,7 @@ public class Grid2 {
 			System.out.println(x + " moved from (" + currentRow + "," + currentColumn + ") to (" + newRow + "," + newColumn + ").");
 			visualise();
 		}
+		//return this.clone();
 				
 	}
 	
@@ -122,7 +124,7 @@ public class Grid2 {
 	public static void main(String[] args) {
 		int size = 4;
 		
-		Grid2 myGrid = new Grid2(size);
+		AbandonedGrid myGrid = new AbandonedGrid(size);
 		
 		char agent = 'X';
 		
@@ -141,6 +143,14 @@ public class Grid2 {
 		
 	}
 	
-			
-	
+	public ArrayList<Character> getPossibleMoves(char x) {
+		ArrayList<Character> possibleMoves = new ArrayList<Character>();
+		if(check(x, ROW) != 0) possibleMoves.add('U');	
+		if(check(x, ROW) != size-1) possibleMoves.add('D');
+		if(check(x, COLUMN) != 0) possibleMoves.add('L');
+		if(check(x, COLUMN) != size-1) possibleMoves.add('R');
+
+		return possibleMoves;
+	}
+
 }

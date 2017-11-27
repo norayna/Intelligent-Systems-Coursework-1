@@ -125,17 +125,17 @@ public class Problem {
 			// WHAT IF IT's EMPTY?? WILL IT MOVE '\u0000' AROUND OR NOT??
 
 			newGrid[newRow][newColumn] = x; // x is put into the new cell
-			
+			/*
 			System.out.println(x + " moved from (" + currentRow + "," + currentColumn + ") to (" + newRow + ","
 					+ newColumn + ").");
-					
-			 visualise(newGrid);
+				*/	
+			 //visualise(newGrid);
 		}
 		return newGrid;
 
 	}
 
-	public static void visualise(char[][] grid) {
+	public static void visualise(char[][] grid) {	//TODO fix
 		for (int i = 0; i < grid.length; i++) { // for each row
 			System.out.println("┌───┐ ┌───┐ ┌───┐ ┌───┐");
 			for (int j = 0; j < grid.length; j++) {
@@ -192,18 +192,29 @@ public class Problem {
 		char[][] goal = new char[size][size];
 
 		//insertBlock(agent, size-1, 0, goal); 		// goal shouldn't need the agent
-		/*
+		
 		insertBlock('A', 1, 1, goal);
 		insertBlock('B', 2, 1, goal);
 		insertBlock('C', 3, 1, goal);
-		*/
-
-		insertBlock('A', size-1, 0, goal);
-		insertBlock('B', size-1, 1, goal);
-		insertBlock('C', size-1, 3, goal);
 		
+		System.out.println("Goal state:");
+		visualise(goal);
+		/*
+		insertBlock('A', size-1, 1, goal);
+		insertBlock('B', size-1, 2, goal);
+		insertBlock('C', size-1, 3, goal);
+		*/
+		/*
 		BFS bfs = new BFS(start, goal);
 		System.out.println(bfs.solve());
+		*/
+		/*
+		DFS dfs = new DFS(start, goal);
+		System.out.println(dfs.solve());
+		*/
+		IDS ids = new IDS(start, goal);
+		System.out.println(ids.solve());
+		
 		
 		//System.out.println(areSame(start, goal));
 
@@ -235,7 +246,7 @@ public class Problem {
 				}
 			}
 		}
-		System.out.println("Is this the goal: " + areSame);
+		//System.out.println(areSame);
 		return areSame;
 	};
 

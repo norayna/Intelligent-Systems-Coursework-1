@@ -18,7 +18,7 @@ public class State implements Comparable{
 	}
 	
 	public int getManhattan(char[][] goal) {
-		//TODO
+		
 		ArrayList<Character> tiles = new ArrayList<Character>();
 		tiles.add('A');
 		tiles.add('B');

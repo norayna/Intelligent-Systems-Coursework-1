@@ -88,6 +88,7 @@ public class IDS {
 			int depth = statePair.second;
 			
 			if(Problem.areSame(state, goal)) {
+				System.out.println(nodesExpanded);
 				return constructPath(state);
 			} else if (depth < limit) {
 				

@@ -161,14 +161,24 @@ public class Problem {
 		// Problem problem = new Problem(size);
 		char[][] start = new char[size][size];
 
-		char agent = 'x';
+		//char agent = 'x';
 
-		insertBlock(agent, size-1, size-1, start);
+		// START STATE THEY GAVE US
+		/*
+		insertBlock('x', size-1, size-1, start);
 
 		insertBlock('A', size-1, 0, start);
 		insertBlock('B', size-1, 1, start);
 		insertBlock('C', size-1, 2, start);
+		*/
+		
+		// HARDEST START STATE
+		insertBlock('x', 2, 0, start);
 
+		insertBlock('A', 3, 3, start);
+		insertBlock('B', 0, 2, start);
+		insertBlock('C', 0, 3, start);
+		
 		System.out.println("Start state:");
 		visualise(start);
 		// problem.visualise();
@@ -190,43 +200,44 @@ public class Problem {
 		char[][] goal = new char[size][size];
 
 		//insertBlock(agent, size-1, 0, goal); 		// goal shouldn't need the agent
-		
+		/*
 		insertBlock('A', 1, 1, goal);
 		insertBlock('B', 2, 1, goal);
 		insertBlock('C', 3, 1, goal);
 		
 		System.out.println("Goal state:");
 		visualise(goal);
+		*/
 		
-		/*
-		insertBlock('A', size-1, 1, goal);
-		insertBlock('B', size-1, 2, goal);
-		insertBlock('C', size-1, 3, goal);
+		insertBlock('A', 3, 1, goal);
+		insertBlock('B', 2, 2, goal);
+		insertBlock('C', 1, 3, goal);
 		
 		System.out.println("Goal state:");
 		visualise(goal);
-		*/
+		
 		
 		/*
 		BFS bfs = new BFS(start, goal);
-		System.out.println(bfs.solve());
+		printSolution(start, bfs.solve());
 		*/
 		/*
 		DFS dfs = new DFS(start, goal);
 		System.out.println(dfs.solve());
 		*/
-		/*
+		
 		IDS ids = new IDS(start, goal);
-		System.out.println(ids.solve());
-		*/
+		printSolution(ids.start, ids.solve());
+		
+		
 		/*
 		State startState = new State(start, 0, goal);
 		System.out.println(startState.getManhattan(goal));
 		*/
-		
+		/*
 		Astar astar = new Astar(start, goal);
-		System.out.println(astar.solve());
-	
+		printSolution(start, astar.solve());
+		*/
 		//System.out.println(areSame(start, goal));
 
 	}
@@ -270,6 +281,20 @@ public class Problem {
 			}
 		}
 		return newGrid;
+	}
+	
+	public static void printSolution(char[][] grid, String solutionPath) {
+		System.out.println("The following solution has been found by the algorithm:");
+		System.out.println(solutionPath);
+		
+		char[][] currentGrid = grid;
+		visualise(currentGrid);
+		
+		for(char direction : solutionPath.toCharArray()) {
+			System.out.println("Agent moved in the direction: " + direction);
+			currentGrid = move('x', direction, currentGrid);
+			visualise(currentGrid);
+		}
 	}
 }
 

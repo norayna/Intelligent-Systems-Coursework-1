@@ -140,11 +140,7 @@ public class Problem {
 			System.out.println("┌───┐ ┌───┐ ┌───┐ ┌───┐");
 			for (int j = 0; j < grid.length; j++) {
 				System.out.print("│ ");
-				System.out.print(grid[i][j] == '\u0000' ? " " : grid[i][j]); // null
-																				// used
-																				// to
-																				// be
-																				// '\u0000'
+				System.out.print(grid[i][j] == '\u0000' ? " " : grid[i][j]); 
 				System.out.print(" │ ");
 			}
 			System.out.print("\n");
@@ -173,6 +169,8 @@ public class Problem {
 		insertBlock('B', size-1, 1, start);
 		insertBlock('C', size-1, 2, start);
 
+		System.out.println("Start state:");
+		visualise(start);
 		// problem.visualise();
 		/*
 		move(agent, 'L', start);
@@ -199,11 +197,16 @@ public class Problem {
 		
 		System.out.println("Goal state:");
 		visualise(goal);
+		
 		/*
 		insertBlock('A', size-1, 1, goal);
 		insertBlock('B', size-1, 2, goal);
 		insertBlock('C', size-1, 3, goal);
+		
+		System.out.println("Goal state:");
+		visualise(goal);
 		*/
+		
 		/*
 		BFS bfs = new BFS(start, goal);
 		System.out.println(bfs.solve());
@@ -212,10 +215,18 @@ public class Problem {
 		DFS dfs = new DFS(start, goal);
 		System.out.println(dfs.solve());
 		*/
+		/*
 		IDS ids = new IDS(start, goal);
 		System.out.println(ids.solve());
+		*/
+		/*
+		State startState = new State(start, 0, goal);
+		System.out.println(startState.getManhattan(goal));
+		*/
 		
-		
+		Astar astar = new Astar(start, goal);
+		System.out.println(astar.solve());
+	
 		//System.out.println(areSame(start, goal));
 
 	}

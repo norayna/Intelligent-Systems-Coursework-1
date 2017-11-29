@@ -18,13 +18,13 @@ public class IDS {
 	public IDS(char[][] start, char[][] goal) {
 		
 		//stack = new Stack<Pair<char[][], Integer>>();
-		relations = new HashMap<char[][], Pair<char[][], Character>>();
+		//relations = new HashMap<char[][], Pair<char[][], Character>>();
 		this.nodesExpanded = 0;
 		
 		this.start = start;
 		this.goal = goal;
 		//stack.push(new Pair(start, 0));
-		relations.put(start, new Pair<char[][], Character>(null, null));	//put the parent & preceding move of the start state as null
+		//relations.put(start, new Pair<char[][], Character>(null, null));	//put the parent & preceding move of the start state as null
 	}
 	public String solve() {
 		
@@ -54,26 +54,13 @@ public class IDS {
 		}
 		//return null;		//to suppress error
 	}
-
-	/*
-	public String DLS(char[][] node, int depth) {
-		if(depth == 0 && Problem.areSame(node, goal)) {
-			return constructPath(node);
-		} else {
-			for(char direction : Problem.getPossibleMoves('x', node)) {
-				char[][] child = Problem.move('x', direction, node);
-				relations.put(child, new Pair(node, direction));
-				stack.push(child);
-				DLS(Problem.move('x', direction, node), depth-1);
-			}
-		}
-		return null;
-	}
-	*/
 	
 	public String DLS(int limit) {
 		Stack<Pair<char[][], Integer>> stack = new Stack<Pair<char[][], Integer>>();
 		stack.push(new Pair(start, 0));
+		
+		relations = new HashMap<char[][], Pair<char[][], Character>>();
+		relations.put(start, new Pair<char[][], Character>(null, null));
 		
 		while(!stack.isEmpty()) {
 			

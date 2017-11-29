@@ -164,15 +164,16 @@ public class Problem {
 		//char agent = 'x';
 
 		// START STATE THEY GAVE US
-		/*
+		
 		insertBlock('x', size-1, size-1, start);
 
 		insertBlock('A', size-1, 0, start);
 		insertBlock('B', size-1, 1, start);
 		insertBlock('C', size-1, 2, start);
-		*/
+		
 		
 		// HARDEST START STATE
+		/*
 		insertBlock('x', 2, 0, start);
 
 		insertBlock('A', 3, 3, start);
@@ -181,6 +182,7 @@ public class Problem {
 		
 		System.out.println("Start state:");
 		visualise(start);
+		*/
 		// problem.visualise();
 		/*
 		move(agent, 'L', start);
@@ -209,9 +211,9 @@ public class Problem {
 		visualise(goal);
 		*/
 		
-		insertBlock('A', 3, 1, goal);
-		insertBlock('B', 2, 2, goal);
-		insertBlock('C', 1, 3, goal);
+		insertBlock('A', 1, 1, goal);
+		insertBlock('B', 2, 1, goal);
+		insertBlock('C', 3, 1, goal);
 		
 		System.out.println("Goal state:");
 		visualise(goal);

@@ -27,8 +27,8 @@ public class BFS {
 	}
 	public String solve() {
 
-		while(!queue.isEmpty()) {
-
+		//while(!queue.isEmpty()) {
+		while(true) {
 			char[][] parent = queue.poll();		//poll retrieves the head of the queue and removes it
 			//System.out.println("The following state was polled from the queue:");
 			
@@ -61,7 +61,7 @@ public class BFS {
 			if(nodesExpanded % 1000000 == 0)System.out.println("Nodes expanded: " + nodesExpanded);
 			//visited.add(parent);
 		}
-		return null;		//to suppress error
+		//return null;		//to suppress error
 	}
 
 	public String constructPath(char[][] state) {

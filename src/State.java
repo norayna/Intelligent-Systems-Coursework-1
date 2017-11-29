@@ -27,14 +27,13 @@ public class State implements Comparable{
 		int manhattan = 0;
 		
 		for(char tile : tiles) {
-			manhattan += Math.abs(Problem.check(tile, Problem.ROW, grid) - Problem.check(tile, Problem.ROW, goal)) + Math.abs(Problem.check(tile, Problem.COLUMN, grid) - Problem.check(tile, Problem.COLUMN, goal));
+			manhattan += Math.abs(GridController.check(tile, GridController.ROW, grid) - GridController.check(tile, GridController.ROW, goal)) + Math.abs(GridController.check(tile, GridController.COLUMN, grid) - GridController.check(tile, GridController.COLUMN, goal));
 		}
 		return manhattan;
 	}
 
 	@Override
 	public int compareTo(Object state) {
-		// TODO Auto-generated method stub
 		return this.getEstCost() - ((State) state).getEstCost();
 	}
 	

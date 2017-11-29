@@ -1,14 +1,10 @@
-//import java.util.HashSet;
-//import java.util.ArrayList;
-//import java.util.Collections;
+
 import java.util.HashMap;
 //import java.util.Queue;
 import java.util.Stack;
-//import java.util.List;
-//import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class IDS {
-	//Stack<Pair<char[][], Integer>> stack;
+
 	
 	int nodesExpanded;
 	HashMap<char[][], Pair<char[][], Character>> relations; //maps state to parent and action to reach child
@@ -68,28 +64,29 @@ public class IDS {
 			
 			Pair<char[][], Integer> statePair = stack.pop();
 			
-			//System.out.println("popped a state off the stack");
+			System.out.println("popped a state off the stack");
+			
 			
 			char[][] state = statePair.first;
 			//Problem.visualise(state);
 			int depth = statePair.second;
 			
-			if(Problem.areSame(state, goal)) {
+			if(GridController.areSame(state, goal)) {
 				System.out.println(nodesExpanded);
 				return constructPath(state);
 			} else if (depth < limit) {
 				
 				
-				//System.out.println("depth " + depth + " is under limit " + limit);
+				System.out.println("depth " + depth + " is under limit " + limit);
 				
-				for (char direction : Problem.getPossibleMoves('x', state)) {
+				for (char direction : GridController.getPossibleMoves('x', state)) {
 					
-					//System.out.println("pushed a child onto the stack");
 					
-					char[][] child = Problem.move('x', direction, state);
+					char[][] child = GridController.move('x', direction, state);
 					stack.push(new Pair(child, depth + 1));
 					
-					
+					System.out.println("The following child state was pushed on the stack:");
+					GridController.visualise(child);
 					
 					
 					relations.put(child, new Pair(state, direction));
@@ -100,8 +97,6 @@ public class IDS {
 				
 				//System.out.println("depth " + depth + " is >= limit " + limit + ", putting the state back oops");
 				
-				//stack.push(statePair);	//push the state back because it's too deep
-				//break;
 			}
 		}
 		return null;	//if the while loop yields no solution, return nulls

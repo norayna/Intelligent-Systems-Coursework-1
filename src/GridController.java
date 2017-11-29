@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Problem {
+public class GridController {
 
 	// [row][column]
 	// private char[][] start;
@@ -164,12 +164,27 @@ public class Problem {
 		//char agent = 'x';
 
 		// START STATE THEY GAVE US
-		
+		/*
 		insertBlock('x', size-1, size-1, start);
 
 		insertBlock('A', size-1, 0, start);
 		insertBlock('B', size-1, 1, start);
 		insertBlock('C', size-1, 2, start);
+		
+		System.out.println("Start state:");
+		visualise(start);
+		*/
+		
+		// DIFFICULTY 1
+		
+		insertBlock('x', 1, 1, start);
+
+		insertBlock('A', 0, 1, start);
+		insertBlock('B', 2, 1, start);
+		insertBlock('C', 3, 1, start);
+		
+		System.out.println("Start state:");
+		visualise(start);
 		
 		
 		// HARDEST START STATE

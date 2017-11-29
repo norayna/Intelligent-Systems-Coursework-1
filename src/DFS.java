@@ -28,31 +28,32 @@ public class DFS {
 		//while(!stack.isEmpty()) {
 		while(true) {
 			char[][] parent = stack.pop();		//poll retrieves the head of the queue and removes it
-			//System.out.println("The following state was polled from the queue:");
+			//System.out.println("The following state was popped off the stack:");
 			
-			//Problem.visualise(parent);
+			//GridController.visualise(parent);
 			
-			if(Problem.areSame(parent, goal)) {
+			if(GridController.areSame(parent, goal)) {
 				
 				System.out.println("Current state:");
-				Problem.visualise(parent);
+				GridController.visualise(parent);
 				
 				System.out.println("Goal state:");
-				Problem.visualise(goal);
+				GridController.visualise(goal);
 				
 				System.out.println(nodesExpanded);
 				return constructPath(parent); //constructPath should use "relations"
 			} else {
 			
-				ArrayList<Character> children = Problem.getPossibleMoves('x', parent);
+				ArrayList<Character> children = GridController.getPossibleMoves('x', parent);
 				Collections.shuffle(children);
 				char direction = children.get(0);
 				
-					char[][] child = Problem.move('x', direction, parent);		//makes the move, thus creating the child
+					char[][] child = GridController.move('x', direction, parent);		//makes the move, thus creating the child
 					
-					//Problem.visualise(Problem.move('x', direction, parent));
+					//System.out.println("The following child state was pushed on the stack:");
+					//GridController.visualise(child);
 					
-					relations.put(child, new Pair<char[][], Character>(parent, direction));	//TODO: relations 
+					relations.put(child, new Pair<char[][], Character>(parent, direction)); 
 					stack.push(child);
 				
 				nodesExpanded++;

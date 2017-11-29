@@ -19,16 +19,16 @@ public class Astar {
 	}
 	
 	public String solve() {
-		while(!availableStates.isEmpty()) {
-			
+
+		while(true) {
 			State currentState = availableStates.poll();
-			if(Problem.areSame(currentState.grid, goal)) {
+			if(GridController.areSame(currentState.grid, goal)) {
 				System.out.println("Nodes expanded: " + nodesExpanded);
 				return constructPath(currentState.grid);
 			}
 			else {
-				for(char direction : Problem.getPossibleMoves('x', currentState.grid)) {
-					char[][] child = Problem.move('x', direction, currentState.grid);
+				for(char direction : GridController.getPossibleMoves('x', currentState.grid)) {
+					char[][] child = GridController.move('x', direction, currentState.grid);
 					availableStates.add(new State(child, currentState.depth+1, goal));
 					relations.put(child, new Pair(currentState.grid, direction));
 					
@@ -37,13 +37,7 @@ public class Astar {
 				if(nodesExpanded % 500000 == 0) System.out.println(nodesExpanded);
 			}
 		}
-		return null;
 	}
-	/*
-	 * public int manhattanCost(char[][] state, int depth) { int cost = depth;
-	 * // plus the estimated cost to the goal
-	 * return cost; }
-	 */
 	
 	public String constructPath(char[][] state) {
 		String solutionPath = new String();

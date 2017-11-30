@@ -64,20 +64,22 @@ public class IDS {
 			
 			Pair<char[][], Integer> statePair = stack.pop();
 			
-			System.out.println("popped a state off the stack");
-			
+			//System.out.println("popped a state off the stack");
 			
 			char[][] state = statePair.first;
-			//Problem.visualise(state);
+			//GridController.visualise(state);
+
 			int depth = statePair.second;
 			
 			if(GridController.areSame(state, goal)) {
+				System.out.println();
+				System.out.println("IDS");
 				System.out.println(nodesExpanded);
 				return constructPath(state);
 			} else if (depth < limit) {
 				
 				
-				System.out.println("depth " + depth + " is under limit " + limit);
+				//System.out.println("depth " + depth + " is under limit " + limit);
 				
 				for (char direction : GridController.getPossibleMoves('x', state)) {
 					
@@ -85,8 +87,8 @@ public class IDS {
 					char[][] child = GridController.move('x', direction, state);
 					stack.push(new Pair(child, depth + 1));
 					
-					System.out.println("The following child state was pushed on the stack:");
-					GridController.visualise(child);
+					//System.out.println("The following child state was pushed on the stack:");
+					//GridController.visualise(child);
 					
 					
 					relations.put(child, new Pair(state, direction));

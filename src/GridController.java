@@ -175,13 +175,13 @@ public class GridController {
 		visualise(start);
 		*/
 		
-		// DIFFICULTY 1
+		// DIFFICULTY 15
 		
 		insertBlock('x', 1, 1, start);
 
-		insertBlock('A', 0, 1, start);
-		insertBlock('B', 2, 1, start);
-		insertBlock('C', 3, 1, start);
+		insertBlock('A', 2, 3, start);
+		insertBlock('B', 2, 2, start);
+		insertBlock('C', 1, 2, start);
 		
 		System.out.println("Start state:");
 		visualise(start);
@@ -198,33 +198,9 @@ public class GridController {
 		System.out.println("Start state:");
 		visualise(start);
 		*/
-		// problem.visualise();
-		/*
-		move(agent, 'L', start);
-		visualise(start);
-
-		move(agent, 'L', start);
-		visualise(start);
-
-		move(agent, 'L', start);
-		visualise(start);
 		
 		
-		char[][] newGrid = move(agent, 'L', start);
-		visualise(newGrid);
-		*/
-		
-		char[][] goal = new char[size][size];
-
-		//insertBlock(agent, size-1, 0, goal); 		// goal shouldn't need the agent
-		/*
-		insertBlock('A', 1, 1, goal);
-		insertBlock('B', 2, 1, goal);
-		insertBlock('C', 3, 1, goal);
-		
-		System.out.println("Goal state:");
-		visualise(goal);
-		*/
+		char[][] goal = new char[size][size];		
 		
 		insertBlock('A', 1, 1, goal);
 		insertBlock('B', 2, 1, goal);
@@ -234,29 +210,25 @@ public class GridController {
 		visualise(goal);
 		
 		
-		/*
+		
 		BFS bfs = new BFS(start, goal);
-		printSolution(start, bfs.solve());
-		*/
-		/*
+		System.out.println(bfs.solve());
+		
+		
 		DFS dfs = new DFS(start, goal);
 		System.out.println(dfs.solve());
-		*/
+		
 		
 		IDS ids = new IDS(start, goal);
-		printSolution(ids.start, ids.solve());
+		System.out.println(ids.solve());
 		
 		
-		/*
-		State startState = new State(start, 0, goal);
-		System.out.println(startState.getManhattan(goal));
-		*/
-		/*
+		
 		Astar astar = new Astar(start, goal);
-		printSolution(start, astar.solve());
-		*/
-		//System.out.println(areSame(start, goal));
+		System.out.println(astar.solve());
+		
 
+		//printSolution(start, "URRURDDDLUUULDRDRDLLUURDDLUUR");
 	}
 
 	public static ArrayList<Character> getPossibleMoves(char x, char[][] grid) {

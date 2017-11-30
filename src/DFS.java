@@ -33,13 +33,14 @@ public class DFS {
 			//GridController.visualise(parent);
 			
 			if(GridController.areSame(parent, goal)) {
-				
-				System.out.println("Current state:");
+				System.out.println();
+				System.out.println("DFS");
+				/*System.out.println("Current state:");
 				GridController.visualise(parent);
 				
 				System.out.println("Goal state:");
 				GridController.visualise(goal);
-				
+				*/
 				System.out.println(nodesExpanded);
 				return constructPath(parent); //constructPath should use "relations"
 			} else {

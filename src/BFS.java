@@ -35,13 +35,16 @@ public class BFS {
 			//GridController.visualise(parent);
 			
 			if(GridController.areSame(parent, goal)) {
-				
+				System.out.println();
+				System.out.println("BFS");
+
+				/*
 				System.out.println("Current state:");
 				GridController.visualise(parent);
 				
 				System.out.println("Goal state:");
 				GridController.visualise(goal);
-				
+				*/
 				System.out.println(nodesExpanded);
 				return constructPath(parent); //constructPath should use "relations"
 			} else

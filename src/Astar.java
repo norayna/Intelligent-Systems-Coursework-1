@@ -22,13 +22,23 @@ public class Astar {
 
 		while(true) {
 			State currentState = availableStates.poll();
+			//System.out.println("The following state was polled from the priority queue:");
+			//GridController.visualise(currentState.grid);
+			
 			if(GridController.areSame(currentState.grid, goal)) {
-				System.out.println("Nodes expanded: " + nodesExpanded);
+				System.out.println();
+				System.out.println("A*");
+				
+				System.out.println(nodesExpanded);
 				return constructPath(currentState.grid);
 			}
 			else {
 				for(char direction : GridController.getPossibleMoves('x', currentState.grid)) {
 					char[][] child = GridController.move('x', direction, currentState.grid);
+					
+					//System.out.println("The following child state was added to the priority queue:");
+					//GridController.visualise(child);
+					
 					availableStates.add(new State(child, currentState.depth+1, goal));
 					relations.put(child, new Pair(currentState.grid, direction));
 					
